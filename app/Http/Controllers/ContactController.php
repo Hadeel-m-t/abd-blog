@@ -22,7 +22,7 @@ class ContactController extends Controller
             'msg'=> $request->msg
         ];
 
-        Mail::to('hdlno@hotmail.com')->send(new ContactMail($details));
+        Mail::to('Abdullah@archtouma.com')->send(new ContactMail($details));
 
         return back()->with('message-sent', 'Your message has been sent successfuly, We will reply to you as soon as possible. Thank you !');
     }
