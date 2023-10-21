@@ -8,10 +8,10 @@ use Mail;
 
 class ContactController extends Controller
 {
-    public function contact() {
+//    public function contact() {
 
-        return view ('emails.contact-me');
-    }
+//        return view ('emails.contact-me');
+//    }
 
     public function sendEmail(Request $request) {
 

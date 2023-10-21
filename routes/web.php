@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Mail\Mailables\Content;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,23 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', [function () {
+Route::get('/', function () {
     return view('frontend.home');
-}]);
+});
 
-Route::get('contact-me', [ContactController::class, 'contact']);
-Route::post('send-message', [ContactController::class, 'sendEmail'])->name('send.message');
+Route::post('send', [ContactController::class, 'sendEmail'])->name('send.message');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile', [HomeController::class, 'store'])->name('profile.store');
+});
+
+Route::get('/download', [HomeController::class, 'download']);
+
+require __DIR__.'/auth.php';

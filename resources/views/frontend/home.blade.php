@@ -4,16 +4,44 @@
 <div class="container-fluid">	
 	<div class="row">
 
-		<div class="col-md-5 m-5 p-5">
+		<div class="col-md-6 me-5">
+
+<nav class="navbar-collapse pb-5 pt-3">
+<div class="container ">
+          <ul class="navbar-nav">
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item me-3">
+                        <a href="{{ route('login') }}" class="shadow-sm fs-6" style="color: #4995f5;">Login</a>
+                    </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                    <li class="nav-item me-3">
+                        <a href="{{ route('register') }}" class="shadow-sm fs-6" style="color: #4995f5;">Register</a>
+                    </li>
+                    @endif
+            @endguest 
+        </ul>
+    </div>
+</nav>
 		 
-		<h1 class="text-center pt-5 mt-5" style="color: #4995f5;">COMING SOON...</h1>
+		<div class="container text-center pt-5 ">
+		<h1 style="color: #4995f5;">COMING SOON...</h1>
 		<p class="text-body-tertiary text-center">Stay Connected, Stay Updated !</p>
 
-		<hr class="mt-5" style="height: 10px;">
+		<hr class="mt-5 mb-3 mx-5" style="height: 10px;">
 
 		<div class="text-center">
+
 		<a href="https://wa.me/qr/MFKQGLU3ZDROE1" class="bi bi-whatsapp" style="font-size: 2rem; color: green;"></a>
+
 		<a href="https://www.linkedin.com/in/abdullah-touma/" class="bi bi-linkedin text-dark ms-3" style="font-size: 2rem;"></a>
+
+		<a href="{{ url('download/')}}" class="bi bi-file-person-fill ms-3" style="font-size: 2rem;"></a>
+
+
+		</div>
 		</div>
 		</div>
 
